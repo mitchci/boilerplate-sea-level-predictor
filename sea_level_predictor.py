@@ -11,7 +11,11 @@ def draw_plot():
     plt.scatter(df['Year'], df['CSIRO Adjusted Sea Level'])
 
     # Create first line of best fit
+    fit_1 = linregress(x=df['CSIRO Adjusted Sea Level'], y=df['Year'])
+    x_fit = np.arange(df['Year'].min(), 2051,1)
+    y_fit = fit_1.slope + fit_1.intercept*x_fit
 
+    plt.plot(x_fit,y_fit)
 
     # Create second line of best fit
 
