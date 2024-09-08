@@ -18,7 +18,13 @@ def draw_plot():
     plt.plot(x_fit,y_fit)
 
     # Create second line of best fit
+    df_b = df.loc[df['Year'] >= 2000]
 
+    fit_2 = linregress(x=df_b['CSIRO Adjusted Sea Level'], y=df_b['Year'])
+    x_fit_2 = np.arange(df_b['Year'].min(), 2051,1)
+    y_fit_2 = fit_2.slope + fit_2.intercept*x_fit_2
+
+    plt.plot(x_fit_2,y_fit_2)
 
     # Add labels and title
 
